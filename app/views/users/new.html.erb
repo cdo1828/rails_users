@@ -1,0 +1,22 @@
+<a href="/users">Go Back</a>
+<h1>New User</h1>
+
+<% if flash["errors"] %>
+	
+		<% flash["errors"].each do |error_message| %> <br>
+		<%= error_message %>
+	<% end %>
+	
+<% end %>
+
+<%= form_for @user, url: {action: "create"} do |f| %>
+	<%= label_tag(:user_first_name, "First Name") %>
+	<%= f.text_field :first_name %>
+	<%= label_tag(:user_last_name, "Last Name") %>
+	<%= f.text_field :last_name %>
+	<%= label_tag(:user_email, "Email") %>
+	<%= f.text_field :email %>
+	<%= label_tag(:user_password, "Password") %>
+	<%= f.text_field :password %>
+	<%= f.submit %>
+<% end %>

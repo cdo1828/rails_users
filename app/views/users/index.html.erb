@@ -1,0 +1,28 @@
+<h1>Users List</h1>
+
+<table>
+	<thead>
+		<th>First Name</th>
+		<th>Last Name</th>
+		<th>Email Address</th>
+		<th>Action</th>
+	</thead>
+<% @users.each do |p| %>
+	<tr>
+		<td><p><%= p.first_name %></p></td>
+		<td><p><%= p.last_name %></p></td>
+		<td><p><%= p.email %></p></td>
+		<td><p><a href="/users/<%= p.id %>">Show</a>
+			<form action='/users/<%=p.id%>' method='post'>
+			<input type="hidden" name='authenticity_token' value= '<%= @form_authenticity_token %>'>
+			<input type='hidden' name='_method' value='delete'>
+			<input type="submit" value="Destroy">
+		</form></td>
+<% end %>	
+	</tr>
+
+
+
+</table>
+
+<a href="/users/new">New User</a>
